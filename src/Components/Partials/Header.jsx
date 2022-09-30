@@ -1,17 +1,18 @@
 import React from 'react'
 import logo from "../../Assets/Images/copyleft.png"
+import { HeaderStyle } from './Header.Styled'
 const Header = () => {
   return (
-    <Header>
+    <HeaderStyle>
       <nav>
         <img src={logo}></img>
         <ul>
           <li>Home</li>
-          <li></li>
-          <li></li>
+          <li>About</li>
+          <li>Blogs</li>
         </ul>
       </nav>
-    </Header>
+    </HeaderStyle>
   )
 }
 
