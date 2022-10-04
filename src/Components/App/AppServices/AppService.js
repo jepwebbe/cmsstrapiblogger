@@ -7,13 +7,13 @@ const API_URL = API_BASE + API_BLOGS
 
 const GetList = (e) => {
     return axios.get(`${API_URL}/${e}`, {
-        headers: authHeader()
+        // headers: authHeader()
     })
 }
 
 const GetDetails = (e, id) => {
     return axios.get(`${API_URL}/${e}/${id}`, {
-        headers: authHeader(),
+        // headers: authHeader(),
     })
 }
 

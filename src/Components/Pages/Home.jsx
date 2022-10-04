@@ -1,10 +1,13 @@
 import React from 'react'
-import Blogposts from './Blogposts'
+import { HomeStyle } from './Home.Styled'
 
 export const Home = () => {
     return (
-        <>
-            <Blogposts />
-        </>
+        <HomeStyle>
+            <article>
+                <h2>Welcome</h2>
+                <p>This is what my blog is</p>
+            </article>
+        </HomeStyle>
     )
 }

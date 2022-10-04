@@ -1,18 +1,20 @@
 import { Route, Routes } from "react-router-dom"
 import {Blogdetails} from "../../Pages/Blogdetails"
-import Blogposts from "../../Pages/Blogposts"
 import { Home } from "../../Pages/Home"
 import NotFound from "../../Pages/NotFound"
 import { Bloglist } from "../../Pages/Bloglist"
+import { About } from "../../Pages/About"
+import Contact from "../../Pages/Contact"
 
 const AppRouter = () => {
     return (
         <>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="blogposts" element={<Blogposts />} />
+                <Route path="about" element={<About />} />
                 <Route path="bloglist" element={<Bloglist />}/>
-                <Route path="blogposts/:id" element={<Blogdetails />}/>
+                <Route path="bloglist/:id" element={<Blogdetails />}/>
+                <Route path="contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </>
