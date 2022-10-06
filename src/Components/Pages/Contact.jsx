@@ -10,11 +10,7 @@ const Contact = () => {
       name: "",
       email: "",
       blog: {
-        data: {
-          attributes: {
-            Blogname: ""
-          }
-        } 
+            id: "" 
       },
       message: "",
     }
@@ -90,11 +86,11 @@ const Contact = () => {
         <select
           name="blog"
           onChange={handleChange}
-          value={formData.blog.data.attributes.Blogname}>
+          value={formData.blog.id}>
           {data.map((blog, idx) => {
             return (
               <option key={idx}
-                value={blog.attributes.Blogname}>
+                value={blog.id}>
                 {blog.attributes.Blogname}</option>
             )
           })}
