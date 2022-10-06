@@ -47,7 +47,7 @@ const Contact = () => {
           console.log('fetch aborted')
         }
       })
-  }, [API_BASE + API_BASE])
+  }, [API_BASE])
 
   // Uses Axios to post the formdata from the state to Strapi
   const handleSubmit = (event) => {
