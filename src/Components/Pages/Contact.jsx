@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { API_BASE } from '../App/AppServices/API_URL';
 import { ContactStyle } from './Contact.Styled'
 import axios from "axios"
+import { useNavigate } from 'react-router-dom';
 
 const Contact = () => {
+  const navigate = useNavigate();
+
   const [data, setData] = useState([]);
   const [formData, setFormData] = useState(
     {
@@ -16,7 +19,7 @@ const Contact = () => {
     }
   )
   // Updates the state whenever anything is written in the input field
-  function handleChange(event) {
+  const handleChange = (event) => {
     const { name, value } = event.target
     setFormData(prevFormData => {
       return {
@@ -61,6 +64,7 @@ const Contact = () => {
 
 
     if (!data) return
+    navigate("/thanks")
   }
   return (
     <ContactStyle>

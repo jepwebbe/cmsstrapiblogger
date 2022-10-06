@@ -30,10 +30,18 @@ export const Bloglist = () => {
             })
     }, [API_BASE + API_BASE])
 
+    const handleSort = () => {
+        const sortedData = [...data].sort((a,b) => {
+            return a.id > b.id ? 1 : -1
+        })
+        setData(sortedData)
+        console.log(sortedData)
+      }
     return (
         <Page title="The blogs page" description="the page of blogs">
             <BloglistStyle>
-                {data ?
+                <button onClick={handleSort} >Sorter mig</button>
+                {data ? 
                     data.map((blog, idx) => {
                         return (
                             <li key={idx}>

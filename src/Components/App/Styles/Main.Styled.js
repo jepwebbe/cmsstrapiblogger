@@ -10,14 +10,14 @@ gap: 1rem;
 min-height: 55vw;
 color: #416a59;
 a {
-    color: #39355f;
+    color: #659dbd;
     text-decoration: none;
 }
 a:hover{
     color: #a9c25d;
 }
 button{
-    background-color: #a9c25d;
+    background-color: #659dbd;
     border: none;
     border-radius: 1rem;
     padding: 0.5rem;
