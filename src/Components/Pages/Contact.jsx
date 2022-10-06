@@ -9,6 +9,13 @@ const Contact = () => {
     {
       name: "",
       email: "",
+      blog: {
+        data: {
+          attributes: {
+            Blogname: ""
+          }
+        } 
+      },
       message: "",
     }
   )
@@ -81,9 +88,9 @@ const Contact = () => {
         <label>
           Hvilken blog handler det om?</label>
         <select
-          name="Blogname"
+          name="blog"
           onChange={handleChange}
-          value={formData.Blogname}>
+          value={formData.blog.data.attributes.Blogname}>
           {data.map((blog, idx) => {
             return (
               <option key={idx}
