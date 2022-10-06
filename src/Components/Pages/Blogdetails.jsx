@@ -10,6 +10,10 @@ export const Blogdetails = () => {
     const [apiData, setApiData] = useState("");
     const { id } = useParams();
 
+    // variable to hide text
+    const [showMore, setShowMore] = useState(false)
+
+// fetches data and returns a json and returns in state apiData
     const getData = () => {
         fetch(API_BASE + "/api/blogposts/" + id + "?populate=*")
             .then(response => {
@@ -39,8 +43,11 @@ export const Blogdetails = () => {
                     )
                 })}
             </div>
+            {/* ReactMarkDown turns markdown into html, showMore hides all characters after 2000 and creates a button to show/hide text */}
+            <article><ReactMarkdown children={showMore ? apiData && apiData.attributes.body : `${apiData && apiData.attributes.body.substring(0, 2000)}`} />
+            <button onClick={() => setShowMore(!showMore)}>{showMore ? "Show less" : "Read more"}</button>
+            </article>
 
-            <article><ReactMarkdown children={apiData && apiData.attributes.body} /></article>
         </BlogdetailsStyle>
     )
 }

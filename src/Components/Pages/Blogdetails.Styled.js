@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const BlogdetailsStyle = styled.article`
 border: 1px solid block;
-background-color: aliceblue;
+background-color: #f5eec2;
 padding: 1rem;
 text-align: justify;
 .blog-images{

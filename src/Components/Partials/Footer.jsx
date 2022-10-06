@@ -4,6 +4,10 @@ import ReactMarkdown from 'react-markdown';
 import { API_BASE } from '../App/AppServices/API_URL';
 import { FooterStyle } from './Footer.Styled';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWordpress, faFacebookF} from '@fortawesome/free-brands-svg-icons'
+
+
 export const Footer = () => {
     const [data, setData] = useState([]);
     const FooterEndpoint = `/api/footer`
@@ -33,8 +37,8 @@ export const Footer = () => {
                 return (
                     <FooterStyle key={ind}>
                         <ReactMarkdown children={foot.SoMe}/>
-                        <p>{foot.Copyright}</p>
-                        <p>{foot.Contact}</p>
+                        <ReactMarkdown children={foot.Copyright}/>
+                        <ReactMarkdown children={foot.Contact}/>
                     </FooterStyle>
                 )
             })}

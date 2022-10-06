@@ -1,39 +1,58 @@
-import React, { useEffect, useState }  from 'react'
+import React, { useEffect, useState } from 'react'
+import ReactMarkdown from 'react-markdown';
 import { Link, Outlet } from "react-router-dom"
-import appService from '../App/AppServices/AppService';
+import { API_BASE, API_BLOGS } from '../App/AppServices/API_URL';
 import { Page } from '../App/Styles/Page';
-import { BloglistStle } from './Bloglist.Styled';
+import { BloglistStyle } from './Bloglist.Styled';
 
 export const Bloglist = () => {
+    const [data, setData] = useState([]);
 
-    const [apiData, setApiData] = useState([]);
+    const [showMore, setShowMore] = useState(false)
+
 
     useEffect(() => {
-        const getData = async () => {
-            try {
-                const result = await appService.GetDetails();
-                console.log(result.data.data);
-                setApiData(result.data.data);
-            } catch (error) {
-                console.error(error)
-            }
-        };
-        getData();
-    }, [])
+        fetch(API_BASE + API_BLOGS)
+            .then(res => {
+                if (!res.ok) { // error coming back from server
+                    throw Error('could not fetch the data for that resource');
+                }
+                return res.json();
+            })
+            .then(data => {
+                setData(data.data);
+                // console.log(data)
+            })
+            .catch(err => {
+                if (err.name === 'AbortError') {
+                    console.log('fetch aborted')
+                }
+            })
+    }, [API_BASE + API_BASE])
 
     return (
-        <Page>
-            <BloglistStle>
-                {apiData ?
-                    apiData.map((blog) => (
-                        <li key={blog.id}>
-                            <Link to={"/bloglist/" + blog.id}>{blog.attributes.title}</Link>
-                            <p>{blog.attributes.date}</p>
-                            {/* <p>Skrevet af {blog.attributes.authors.data[0].attributes.author}</p> */}
-                        </li>
-                    )) :
-                    <>...Loading</>}
-            </BloglistStle>
+        <Page title="The blogs page" description="the page of blogs">
+            <BloglistStyle>
+                {data ?
+                    data.map((blog, idx) => {
+                        return (
+                            <li key={idx}>
+                                <div>
+                                    <Link to={"/bloglist/" + blog.id}><h2>{blog.attributes.title}</h2></Link>
+                                    <p className="byline">Skrevet den {blog.attributes.date}</p>
+                                    <p className="byline">Af {blog.attributes.authors.data[0].attributes.author}</p>
+                                    <p className="byline">På bloggen <span>{blog.attributes.blog.data.attributes.Blogname}</span></p>
+                                    <ReactMarkdown children={showMore ? blog.attributes.body : `${blog.attributes.body.substring(0, 400)}`} />
+                                    <button><Link to={"/bloglist/" + blog.id}>Læs indlæg</Link></button>
+                                </div>
+                                <img src={API_BASE + blog.attributes.cover.data[0].attributes.url} />
+                            </li>
+                        )
+
+                    }) :
+                    <>...Loading</>
+                }
+            </BloglistStyle>
         </Page>
     )
 }

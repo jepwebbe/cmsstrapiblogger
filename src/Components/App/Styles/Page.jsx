@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const Page = (props) => {
-    const { children, title, description, subtitle } = props;
+    const { children, title, description } = props;
 
     useEffect(() => {
         document.title = title;

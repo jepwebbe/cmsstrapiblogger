@@ -3,6 +3,9 @@ import { Aboutman } from '../Partials/AboutBlogger'
 
 export const About = () => {
   return (
-    <Aboutman/>
+    <section>
+    <h1>Om Bloggerman</h1>
+      <Aboutman />
+    </section>
   )
 }
