@@ -13,4 +13,7 @@ li{
     padding: 1rem 0;
     margin: auto 0;
 }
+@media screen and (max-width: 800px) {
+ display: none   
+}
 `

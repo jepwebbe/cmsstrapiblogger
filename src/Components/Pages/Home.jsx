@@ -7,10 +7,10 @@ import { HomeStyle } from './Home.Styled';
 
 export const Home = () => {
     const [data, setData] = useState([]);
-
+// Deklarerer useSate som falsk, der længere nede i koden sørger for, der kun vises 400 tegn
     const [showMore, setShowMore] = useState(false)
 
-
+// useEffect hook sørger for, at der rerenders, når data er fetchet fra API, og gemmer i data
     useEffect(() => {
         fetch(API_BASE + API_BLOGS)
             .then(res => {
@@ -21,7 +21,6 @@ export const Home = () => {
             })
             .then(data => {
                 setData(data.data);
-                // console.log(data)
             })
             .catch(err => {
                 if (err.name === 'AbortError') {

@@ -31,4 +31,11 @@ a{
 button:hover{
     background-color: #416a59;
 }
+@media screen and (max-width: 1200px) {
+    grid-template-columns: 70% 30%;
+}
+@media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+}
 `

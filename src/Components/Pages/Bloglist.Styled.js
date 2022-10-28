@@ -8,11 +8,8 @@ margin-top: 0;
 
 li{
 display: flex;
-flex-direction: column;
 align-items: center;
 text-align: center;
-display: flex;
-flex-direction: row;
 margin: 0 auto 1rem auto;
 align-content: center;
 background-color: #f5eec2;
@@ -43,5 +40,17 @@ max-height: 200px;
 width: auto;    
 display: block;
 flex: 1;
+}
+@media screen and (max-width: 800px){
+    padding: 0;
+    li {
+        flex-direction: column;
+        div {
+            flex: unset;
+        }
+        img {
+            flex: unset;
+        }
+    }
 }
 `

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const HomeStyle = styled.section `
+export const HomeStyle = styled.section`
 padding: 0 1rem;
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -20,5 +20,8 @@ article{
     }
     button{
     }
+}
+@media screen and (max-width: 800px) {
+    padding:0;
 }
 `
