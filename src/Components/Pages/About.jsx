@@ -1,5 +1,5 @@
 import React from 'react'
-import { AboutSlides } from '../Partials/AbouSlides'
+import { AboutSlides } from '../Partials/AboutSlides'
 import { Aboutman } from '../Partials/AboutBlogger'
 
 export const About = () => {

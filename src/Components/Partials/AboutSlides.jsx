@@ -25,7 +25,6 @@ export const AboutSlides = () => {
                 }
             })
     }, [API_BASE])
-    console.log(data)
 
     /* loop over billederne i mappen 'cover' og genererer hhv links og src til img */
     return (

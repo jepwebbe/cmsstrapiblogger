@@ -19,7 +19,6 @@ export const Aboutman = () => {
             })
             .then(data => {
                 setData(data.data);
-                // console.log(data)
             })
             .catch(err => {
                 if (err.name === 'AbortError') {
@@ -32,12 +31,10 @@ export const Aboutman = () => {
     return (
         <AboutBloggerStyle >
             {data && Object.values(data).map((about, ind) => {
-                console.log(about)
                 return (
                     <AboutBloggerStyle key={ind}>
                         <ReactMarkdown children={about.description}/>
 {/*                         {about && about.picture.map((img, inx) => {
-                            console.log(img)
                             return (
                                 <img src={API_BASE + img.url} />
                             )
