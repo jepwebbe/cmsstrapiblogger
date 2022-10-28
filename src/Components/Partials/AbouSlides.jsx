@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { API_BASE, API_BLOGS } from '../App/AppServices/API_URL';
+import { AboutBloggerStyle } from './AboutBlogger.Styled';
+import { AboutSlidesStyle } from './AboutSlides.Styled';
 
 export const AboutSlides = () => {
     const [data, setData] = useState([]);
-
+// useEffect hook sørger for, at der rerenders, når data er fetchet fra API, og gemmer i data
     useEffect(() => {
+        // fetcher api og hvis ingen fejl, sætter state til resultatet
         fetch(API_BASE + API_BLOGS)
             .then(res => {
                 if (!res.ok) { // error coming back from server
@@ -23,9 +26,10 @@ export const AboutSlides = () => {
             })
     }, [API_BASE])
     console.log(data)
-    /* Below, I'm generating buttons and images. Eact has two level of mapping where I first map thorugh the blogposts and then through the images of each blogpost, to display all images of all blogposts. I also sort the second level of maps on both to display them in ascending order by id */
+
+    /* loop over billederne i mappen 'cover' og genererer hhv links og src til img */
     return (
-        <section>
+        <AboutSlidesStyle>
             <h3>I'm a CSS slider of all the blogpost images</h3>
             <p>Click a link to slide</p>
             {data ?
@@ -33,14 +37,14 @@ export const AboutSlides = () => {
                     return (
                         link && link.attributes.cover.data.sort((a, b) => a.id > b.id ? +1 : -1).map((thelink, ind) => {
                             return (
-                               <a key={ind} href={"#slide-" + thelink.id} > <button className="z-100 inline-flex w-[1.5rem] h-[1.5rem] no-underline items-center justify-center rounded-[50%] mt-0 mx-0 mb-[0.5rem]">{thelink.id}</button></a>
+                               <a key={ind} href={"#slide-" + thelink.id} > <button>{thelink.id}</button></a>
                             )
                         })
                     )
                 }) :
                 <>...Loading</>
             }
-            <div className="flex overflow-x-hidden snap-x scroll-smooth scrolling-touch">
+            <div>
 
                 {data &&
                     data.map((blog) => {
@@ -57,7 +61,7 @@ export const AboutSlides = () => {
 
 
 
-        </section>
+        </AboutSlidesStyle>
     )
 }
 
